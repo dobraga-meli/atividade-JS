@@ -11,8 +11,8 @@ let products = [
     { name: 'Monitor', price: 200, quantity: 3, colors: [] },
 ]
 
-function addID(){
-    products = products.map((value, index) => { return {...value, id: index + 1}})
+function addID() {
+    products = products.map((product, index) => { return { ...product, id: index + 1 } })
 }
 
 function showProductName() {
@@ -20,29 +20,26 @@ function showProductName() {
 }
 
 function showProductById(id) {
-    console.log(products)
     const product = products.find(product => product.id === id)
     console.log(product)
 }
 
-function showProductsColorBlack() {
-    const colorBlack = 'black'
-    const productsColorBlack = products.filter(product => {
-        if(product.colors.find(color => color === colorBlack)) {
-            return true
-        }
-        return false
-    })
-    console.log(productsColorBlack)
-}
+function showProductsByColor(productColor = '') {
+    let productsByColor;
 
-function showProductsWithoutColor() {
-    const productsWithoutColor = products.filter(product => !product.colors.length)
-    console.log(productsWithoutColor)
+    if (productColor) {
+        productsByColor = products.filter(product => 
+            product.colors.find(color => color === productColor) ? true : false
+        )
+    } else {
+        productsByColor = products.filter(product => !product.colors.length)
+    }
+
+    console.log(productsByColor)
 }
 
 addID()
 showProductName()
 showProductById(3)
-showProductsColorBlack()
-showProductsWithoutColor()
+showProductsByColor('black')
+showProductsByColor()

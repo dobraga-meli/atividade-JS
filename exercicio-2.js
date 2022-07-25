@@ -37,7 +37,6 @@ function showProductsWithCertainLetter(letter) {
 
 addProduct({ name: 'skate', price: 270, quantity: 13, colors: ['blue'] })
 removeOutOfStockProducts()
-console.log(products)
 totalProductsInStock()
 showProductsWithPriceGreaterThan(500)
 showProductsWithCertainLetter('o')
